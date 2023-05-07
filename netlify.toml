@@ -1,0 +1,5 @@
+[build]
+  command = "node server.js && npm run build"
+
+[dev]
+  command = "node server.js && npm run dev"
