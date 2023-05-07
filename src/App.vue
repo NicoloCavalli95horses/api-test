@@ -1,21 +1,12 @@
 <template>
-  <h1>Pizza API test:</h1> 
-  hope this will work! 
-   <div v-for="p in pizza" :key="p">
-     {{ p.name }}, {{ p.price }}
-   </div>
+  <object
+  type="text/html"
+  data="/.netlify/functions/server"
+  style="width:100%;height:100%;">
+  </object>
 </template>
 
 <script setup>
-import { onBeforeMount, ref } from "vue";
-
-const pizza = ref("");
-
-onBeforeMount(async () => {
-  const response = await fetch("https://merry-dieffenbachia-5ddf71.netlify.app/pizza");
-  const jsonData = await response.json();
-  pizza.value = jsonData;
-});
 </script>
 
 <style>
