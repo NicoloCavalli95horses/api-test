@@ -1,17 +1,19 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+   <div v-for="p in pizza" :key="p">
+     {{ p.name }}, {{ p.price }}
+   </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+import { onBeforeMount, ref } from "vue";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+const pizza = ref("");
+
+onBeforeMount(async () => {
+  const response = await fetch("http://localhost:3000/pizza");
+  const jsonData = await response.json();
+  pizza.value = jsonData;
+});
 </script>
 
 <style>
