@@ -1,5 +1,6 @@
 <template>
-  <h1>Pizza API test:</h1>  
+  <h1>Pizza API test:</h1> 
+  hope this will work! 
    <div v-for="p in pizza" :key="p">
      {{ p.name }}, {{ p.price }}
    </div>
