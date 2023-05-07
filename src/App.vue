@@ -11,7 +11,7 @@ import { onBeforeMount, ref } from "vue";
 const pizza = ref("");
 
 onBeforeMount(async () => {
-  const response = await fetch("http://localhost:3000/pizza");
+  const response = await fetch("https://merry-dieffenbachia-5ddf71.netlify.app/pizza");
   const jsonData = await response.json();
   pizza.value = jsonData;
 });
