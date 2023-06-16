@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Boston"
+    },
+    {
+      "id": 2,
+      "name": "New York"
+    },
+    {
+      "id": 3,
+      "name": "Chicago"
+    }
+  ]
+}

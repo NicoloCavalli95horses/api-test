@@ -4,16 +4,12 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
+const controller = require("./data/data_controller");
 
 // ===========================
 // Consts
 // ===========================
 const PORT = process.env.PORT || 5500;
-const DATA = [
-    { id: 1, name: "Boston" },
-    { id: 2, name: "New York" },
-    { id: 3, name: "Chicago" },
-];
 const app = express();
 
 
@@ -28,7 +24,7 @@ router.get("/api", (req, res, next) => {
         status: 200,
         statusText: "OK",
         message: "All cities retrieved",
-        data: DATA,
+        data: controller.get(),
     });
 });
 
