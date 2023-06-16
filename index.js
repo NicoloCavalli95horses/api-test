@@ -7,7 +7,7 @@ const cors = require("cors");
 // ===========================
 // Consts
 // ===========================
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5500;
 const DATA = [
     { id: 1, name: "Boston" },
     { id: 2, name: "New York" },
