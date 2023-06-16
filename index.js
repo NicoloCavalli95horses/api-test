@@ -3,6 +3,7 @@
 // ===========================
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 
 // ===========================
 // Consts
@@ -21,7 +22,7 @@ const app = express();
 // ===========================
 const router = express.Router();
 
-router.get("/", function (req, res, next) {
+router.get("/api", (req, res, next) => {
     // REST data is wrapped in a json envelope
     res.status(200).json({
         status: 200,
@@ -31,12 +32,19 @@ router.get("/", function (req, res, next) {
     });
 });
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  });
+
 app.listen(PORT, function() {
   console.log("node server running at", PORT);
 });
  
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(cors({
     // handle cors policy here
 }));
-app.use("/api", router);
+
+app.use("/", router);
 
