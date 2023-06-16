@@ -11,7 +11,7 @@ const controller = require("./data/data_controller");
 // ===========================
 const PORT = process.env.PORT || 5500;
 const app = express();
-
+const DATA = controller.get();
 
 // ===========================
 // Router
@@ -24,7 +24,7 @@ router.get("/api", (req, res, next) => {
         status: 200,
         statusText: "OK",
         message: "All cities retrieved",
-        data: controller.get(),
+        data: DATA,
     });
 });
 

@@ -13,13 +13,12 @@
   <script>
     const xhttp = new XMLHttpRequest();
     const p_el = document.getElementById("target");
-    // const URL = "https://api-test-18fk.onrender.com/api";
     const URL = "/api";
 
     xhttp.onreadystatechange = function () {
       if (this.readyState == XMLHttpRequest.DONE && this.status === 200) {
         const res = JSON.parse(this.response);
-        p_el.innerHTML = JSON.stringify(res);
+        p_el.innerHTML = JSON.stringify( res );
       }
     };
 
