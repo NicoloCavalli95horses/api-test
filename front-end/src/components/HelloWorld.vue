@@ -1,48 +1,44 @@
+<script setup>
+defineProps({
+  msg: {
+    type: String,
+    required: true
+  }
+})
+</script>
+
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>{{ res }}</p>
+  <div class="greetings">
+    <h1 class="green">{{ msg }}</h1>
+    <h3>
+      You’ve successfully created a project with
+      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
+      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
+    </h3>
   </div>
 </template>
 
-<script setup>
-import { defineProps, onMounted, ref } from "vue";
-
-defineProps({
-  msg: String,
-});
-
-const res = ref(null);
-
-onMounted(() => {
-  const xhttp = new XMLHttpRequest();
-  const URL = "/api";
-
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == XMLHttpRequest.DONE && this.status === 200) {
-      res.value = JSON.parse(this.response);
-    }
-  };
-
-  xhttp.open("GET", URL);
-  xhttp.send();
-});
-</script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+h1 {
+  font-weight: 500;
+  font-size: 2.6rem;
+  position: relative;
+  top: -10px;
+}
+
 h3 {
-  margin: 40px 0 0;
+  font-size: 1.2rem;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+
+.greetings h1,
+.greetings h3 {
+  text-align: center;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+
+@media (min-width: 1024px) {
+  .greetings h1,
+  .greetings h3 {
+    text-align: left;
+  }
 }
 </style>

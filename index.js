@@ -54,12 +54,14 @@ router.get("/api/:id", (req, res, next) => {
   );
 });
 
+// send homepage. Vue will take care of other router requests
+router.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
 // ===========================
 // App
 // ===========================
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
 app.listen(PORT, function () {
   console.log("node server running at", PORT);
 });
