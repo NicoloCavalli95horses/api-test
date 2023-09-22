@@ -1,18 +1,18 @@
 [
   {
     "id": 1,
-    "name": "Boston"
+    "name": "Margherita"
   },
   {
     "id": 2,
-    "name": "New York"
+    "name": "Prosciutto e funghi"
   },
   {
     "id": 3,
-    "name": "Chicago"
+    "name": "Capricciosa"
   },
   {
     "id": 4,
-    "name": "Rome"
+    "name": "Tonno e cipolla"
   }
 ]
