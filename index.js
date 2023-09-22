@@ -25,6 +25,6 @@ handleRouter( router );
 // App
 // ===========================
 app.listen(PORT, () =>  console.log("node server running at", PORT));
-app.use(express.static(path.join(__dirname, "dist")));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 app.use("/", router);

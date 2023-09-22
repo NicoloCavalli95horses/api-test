@@ -46,6 +46,6 @@ module.exports = function handleRouter(router) {
 
   // send homepage. Vue will take care of other router requests
   router.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "dist", "index.html"));
+    res.sendFile(path.join(__dirname, "public", "index.html"));
   });
 }

@@ -23,8 +23,8 @@ import {
 //=====================================
 // Consts
 //=====================================
-const URL = "http://localhost:5500/api"; // local server
-  // const URL = "/api";  // to be used in production
+// const URL = "http://localhost:5500/api"; // local server
+const URL = "/api";  // to be used in production
 const response = ref( null );
 
 
