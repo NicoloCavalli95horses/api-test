@@ -5,6 +5,7 @@ const express      = require("express");
 const cors         = require("cors");
 const path         = require("path");
 const handleRouter = require("./router");
+const bodyParser = require('body-parser');
 
 
 // ===========================
@@ -12,6 +13,8 @@ const handleRouter = require("./router");
 // ===========================
 const app = express();
 const PORT = process.env.PORT || 5500;
+app.use(bodyParser.json());
+
 
 
 // ===========================
