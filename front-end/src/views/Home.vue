@@ -56,9 +56,9 @@ async function fetchAPI() {
 //=====================================
 // Life cycle
 //=====================================
-onMounted( () => {
-  requestXML();
-  // await fetchAPI();
+onMounted( async () => {
+  // requestXML();
+  await fetchAPI();
 });
 
 
