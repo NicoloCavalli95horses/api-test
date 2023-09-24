@@ -2,12 +2,22 @@
   <div class="bg">
     <div class="login-wrapper">
       <div class="fields">
-        <p>Username</p>
-        <input type="text" v-model="username" />
-        <p>Password</p>
-        <input type="text" v-model="password" />
+        <InputText
+          label="Username"
+          placeholder="insert your username"
+          v-model="username"
+          @reset="username = ''"
+        />
+        <InputText
+          :anonymize="true"
+          label="Password"
+          placeholder="insert your password"
+          v-model="password"
+          @reset="username = ''"
+        />
       </div>
-      <button @click="onConfirm">Confirm</button>
+      <span v-if="error.length" class="error">Auth fail: {{ error }}</span>
+      <Btn text="Confirm" :def="true" @click="onConfirm" />
     </div>
   </div>
 </template>
@@ -16,44 +26,39 @@
 //==============================
 // Import
 //==============================
-import { ref } from 'vue';
+import Btn from "../components/Btn.vue";
+import InputText from "../components/InputText.vue";
+import { ref } from "vue";
+import { apiLogin } from "../utils/apis";
 
-const emit = defineEmits(['logged']);
+const emit = defineEmits(["logged"]);
 
 //==============================
 // Consts
 //==============================
-const username = ref('');
-const password = ref('');
-// const URL = 'http://localhost:5500/login';
-const URL = '/login';
-
-
+const username = ref("");
+const password = ref("");
+const error = ref("");
 
 //==============================
 // Consts
 //==============================
 async function onConfirm() {
-  const res = await apiLogin( username.value, password.value );
+  const res = await apiLogin({ 
+    username: username.value,
+    password: password.value
+  });
+  username.value = '';
+  password.value = '';
+  error.value = '';
+
   const is_logged = res.data.logged;
-  console.log( is_logged );
-  if (is_logged) {
-    emit('logged');
+  if ( is_logged ) {
+    emit("logged");
+  } else {
+    error.value = res.message;
   }
 }
-
-async function apiLogin( username, password ) {
-  const config = {
-    method: 'POST',
-    mode: 'cors',
-    headers: { 'Content-Type' : 'application/json' },
-    body: JSON.stringify({ username, password })
-  }
-
-  const res = await fetch( URL, config );
-  return res.json();
-}
-
 
 </script>
 
@@ -76,7 +81,7 @@ async function apiLogin( username, password ) {
   padding: 32px;
   border-radius: 12px;
   height: 400px;
-  background-color: #111;
+  background-color: var(--black);
   .fields {
     width: 100%;
     input {
@@ -90,16 +95,6 @@ async function apiLogin( username, password ) {
         outline: none;
       }
     }
-  }
-  
-  button {
-    height: 32px;
-    border-radius: 8px;
-    border: none;
-    text-transform: uppercase;
-    background-color: orangered;
-    color: white;
-    cursor: pointer;
   }
 }
 
