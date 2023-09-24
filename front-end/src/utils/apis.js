@@ -1,5 +1,5 @@
-const URL = "http://localhost:5500/login";
-// const URL = '/login';
+
+const BASE_URL = getBaseBASE_URL();
 
 export async function apiLogin({ username, password }) {
   const config = {
@@ -9,6 +9,14 @@ export async function apiLogin({ username, password }) {
     body: JSON.stringify({ username, password }),
   };
 
-  const res = await fetch(URL, config);
+  const EP = BASE_URL + '/login';
+  console.log(EP);
+  const res = await fetch(EP, config);
   return res.json();
+}
+
+
+function getBaseBASE_URL() {
+  const is_local = window.location.hostname == 'localhost';
+  return is_local ? 'http://localhost:5500' : '/';
 }
