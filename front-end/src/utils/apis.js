@@ -18,5 +18,5 @@ export async function apiLogin({ username, password }) {
 
 function getBaseBASE_URL() {
   const is_local = window.location.hostname == 'localhost';
-  return is_local ? 'http://localhost:5500' : '/';
+  return is_local ? 'http://localhost:5500' : '';
 }
